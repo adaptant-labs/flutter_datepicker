@@ -1,0 +1,14 @@
+name: flutter_datepicker
+description: A flutter plugin for individual invocation of Date Pickers (Year, Month, Day)
+version: 0.0.1
+author: Adaptant Labs <labs@adaptant.io>
+homepage: https://www.github.com/adaptant-labs/flutter_datepicker
+repository: https://www.github.com/adaptant-labs/flutter_datepicker
+issue_tracker: https://github.com/adaptant-labs/flutter_datepicker/issues
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
