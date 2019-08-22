@@ -28,18 +28,18 @@ Future<DateTime> showYearPicker({
   EdgeInsetsGeometry titlePadding,
 }) async {
   assert(context != null);
-  assert(initialDate  != null);
+  assert(initialDate != null);
 
   return await showDialog(
-      context: context,
-      builder: (context) => FlutterDatePicker(
-          mode: FlutterDatePickerMode.year,
-          selectedDate: initialDate,
-          firstDate: firstDate ?? DateTime(0),
-          lastDate: lastDate ?? DateTime(9999),
-          title: title,
-          titlePadding: titlePadding,
-      ),
+    context: context,
+    builder: (context) => FlutterDatePicker(
+      mode: FlutterDatePickerMode.year,
+      selectedDate: initialDate,
+      firstDate: firstDate ?? DateTime(0),
+      lastDate: lastDate ?? DateTime(9999),
+      title: title,
+      titlePadding: titlePadding,
+    ),
   );
 }
 
@@ -53,17 +53,17 @@ Future<DateTime> showMonthPicker({
   EdgeInsetsGeometry titlePadding,
 }) async {
   assert(context != null);
-  assert(initialDate  != null);
+  assert(initialDate != null);
 
   return await showDialog(
     context: context,
     builder: (context) => FlutterDatePicker(
-        mode: FlutterDatePickerMode.month,
-        selectedDate: initialDate,
-        firstDate: firstDate ?? DateTime(0),
-        lastDate: lastDate ?? DateTime(9999),
-        title: title,
-        titlePadding: titlePadding,
+      mode: FlutterDatePickerMode.month,
+      selectedDate: initialDate,
+      firstDate: firstDate ?? DateTime(0),
+      lastDate: lastDate ?? DateTime(9999),
+      title: title,
+      titlePadding: titlePadding,
     ),
   );
 }
@@ -78,17 +78,17 @@ Future<DateTime> showDayPicker({
   EdgeInsetsGeometry titlePadding,
 }) async {
   assert(context != null);
-  assert(initialDate  != null);
+  assert(initialDate != null);
 
   return await showDialog(
     context: context,
     builder: (context) => FlutterDatePicker(
-        mode: FlutterDatePickerMode.day,
-        selectedDate: initialDate,
-        firstDate: firstDate ?? DateTime(0),
-        lastDate: lastDate ?? DateTime(9999),
-        title: title,
-        titlePadding: titlePadding,
+      mode: FlutterDatePickerMode.day,
+      selectedDate: initialDate,
+      firstDate: firstDate ?? DateTime(0),
+      lastDate: lastDate ?? DateTime(9999),
+      title: title,
+      titlePadding: titlePadding,
     ),
   );
 }
@@ -106,18 +106,18 @@ class FlutterDatePicker extends StatefulWidget {
   final DateTime firstDate;
   final DateTime lastDate;
 
-  FlutterDatePicker({
-    Key key,
-    @required this.mode,
-    this.title,
-    this.titlePadding,
-    @required this.selectedDate,
-    @required this.firstDate,
-    @required this.lastDate
-  }) : assert(!firstDate.isAfter(lastDate)),
-       assert(selectedDate.isAfter(firstDate) &&
-              selectedDate.isBefore(lastDate)),
-       super(key: key);
+  FlutterDatePicker(
+      {Key key,
+      @required this.mode,
+      this.title,
+      this.titlePadding,
+      @required this.selectedDate,
+      @required this.firstDate,
+      @required this.lastDate})
+      : assert(!firstDate.isAfter(lastDate)),
+        assert(
+            selectedDate.isAfter(firstDate) && selectedDate.isBefore(lastDate)),
+        super(key: key);
 
   @override
   _FlutterDatePickerState createState() => _FlutterDatePickerState();
@@ -137,64 +137,61 @@ class _FlutterDatePickerState extends State<FlutterDatePicker> {
     return Container(
         padding: EdgeInsets.all(20.0),
         child: Text("Select a " + describeEnum(widget.mode),
-            style: Theme
-                .of(context)
+            style: Theme.of(context)
                 .textTheme
                 .title
                 .copyWith(color: Colors.white)),
-        color: Theme
-            .of(context)
-            .primaryColor);
+        color: Theme.of(context).primaryColor);
   }
 
   @override
   Widget build(BuildContext context) {
     return SimpleDialog(
-        titlePadding: widget.titlePadding ??
-              widget.title == null ? EdgeInsets.all(0) : EdgeInsets.all(20.0),
+        titlePadding: widget.titlePadding ?? widget.title == null
+            ? EdgeInsets.all(0)
+            : EdgeInsets.all(20.0),
         title: widget.title ?? _defaultPickerHeader(context),
         children: <Widget>[
           Container(
             height: 300,
             width: double.maxFinite,
-            child:
-              widget.mode == FlutterDatePickerMode.year ?
-                YearPicker(
-                  key: _pickerKey,
-                  firstDate: widget.firstDate,
-                  selectedDate: _selectedDate,
-                  lastDate: widget.lastDate,
-                  onChanged: (DateTime selected) {
-                    setState(() {
-                      _selectedDate = selected;
-                    });
-                  },
-                ) :
-              widget.mode == FlutterDatePickerMode.month ?
-                MonthPicker(
-                  key: _pickerKey,
-                  firstDate: widget.firstDate,
-                  selectedDate: _selectedDate,
-                  lastDate: widget.lastDate,
-                  onChanged: (DateTime selected) {
-                    setState(() {
-                      _selectedDate = selected;
-                    });
-                  },
-                ) :
-                DayPicker(
-                  key: _pickerKey,
-                  displayedMonth: widget.selectedDate,
-                  firstDate: widget.firstDate,
-                  selectedDate: _selectedDate,
-                  currentDate: DateTime.now(),
-                  lastDate: widget.lastDate,
-                  onChanged: (DateTime selected) {
-                    setState(() {
-                      _selectedDate = selected;
-                    });
-                  },
-                ),
+            child: widget.mode == FlutterDatePickerMode.year
+                ? YearPicker(
+                    key: _pickerKey,
+                    firstDate: widget.firstDate,
+                    selectedDate: _selectedDate,
+                    lastDate: widget.lastDate,
+                    onChanged: (DateTime selected) {
+                      setState(() {
+                        _selectedDate = selected;
+                      });
+                    },
+                  )
+                : widget.mode == FlutterDatePickerMode.month
+                    ? MonthPicker(
+                        key: _pickerKey,
+                        firstDate: widget.firstDate,
+                        selectedDate: _selectedDate,
+                        lastDate: widget.lastDate,
+                        onChanged: (DateTime selected) {
+                          setState(() {
+                            _selectedDate = selected;
+                          });
+                        },
+                      )
+                    : DayPicker(
+                        key: _pickerKey,
+                        displayedMonth: widget.selectedDate,
+                        firstDate: widget.firstDate,
+                        selectedDate: _selectedDate,
+                        currentDate: DateTime.now(),
+                        lastDate: widget.lastDate,
+                        onChanged: (DateTime selected) {
+                          setState(() {
+                            _selectedDate = selected;
+                          });
+                        },
+                      ),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
