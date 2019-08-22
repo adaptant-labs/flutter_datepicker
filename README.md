@@ -1,4 +1,4 @@
-# flutter_datepicker
+# flutter_datepicker_single
 
 [![Build Status](https://travis-ci.com/adaptant-labs/flutter_datepicker.svg?branch=master)](https://travis-ci.com/adaptant-labs/flutter_datepicker#)
 [![Pub](https://img.shields.io/pub/v/flutter_datepicker.svg)](https://pub.dartlang.org/packages/flutter_datepicker)

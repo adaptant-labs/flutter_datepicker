@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_datepicker/flutter_datepicker.dart';
+import 'package:flutter_datepicker_single/flutter_datepicker_single.dart';
 import 'package:intl/intl.dart';
 
 void main() => runApp(MyApp());

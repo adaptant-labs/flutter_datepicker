@@ -1,6 +1,6 @@
 # flutter_datepicker_example
 
-Demonstrates how to use the flutter_datepicker plugin.
+Demonstrates how to use the flutter_datepicker_single plugin.
 
 ## Getting Started
 
